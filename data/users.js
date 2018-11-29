@@ -2,11 +2,17 @@
     Implementation for user DAO.
 */ 
 /*
-    part I: user
-    part II: shopping cart
-    part III: wishlists
-    part IV: reviews
-    part IV: credential
+    * user
+        - getAllUsers
+        - getUserById
+        - addNewUser
+        - deleteUser
+        - UpdateUser
+    * wishlists
+        - addWishToUser
+        - removeWishFromUser
+    * reviews
+        - TODO
 
 */ 
 
@@ -16,14 +22,11 @@ const bcrypt = require('bcrypt');
 const uuid = require('node-uuid');
 
 
-function generateHashedPassword(password) {
-    return bcrypt.hashSync(password, 10);
-}
 
 
 let exportMethods = {
 
-    /* Part I */
+    /* Users */
 
     //getAllUsers
     getAllUsers() {
@@ -54,7 +57,6 @@ let exportMethods = {
                 firstname: firstname,
                 lastname: lastname,
                 email: email,
-                password: generateHashedPassword(password),
                 wishlists: [],
                 cart:[],
                 reviews: []
@@ -89,7 +91,6 @@ let exportMethods = {
                 firstname: updatedUser.firstname,
                 lastname: updatedUser.lastname,
                 email: updatedUser.email,
-                password: updatedUser.password
             };
 
             let updateCommand = {
@@ -103,7 +104,45 @@ let exportMethods = {
         })
     },
 
-    //addReview
+    /* Wishlists */
+
+    //addWishToUser
+    addWishToUser(userId, productId, productTitle) {
+        return this.getUserById(userId).then(currentUser => {
+            return userCollection.updateOne(
+                {
+                    _id: id
+                }, 
+                {
+                    $addToSet: {
+                        wishlists: {
+                            id: productId,
+                            title: productTitle
+                        }
+                    }
+                }
+            )
+        })
+    },
+
+    //removeWishFromUser
+    removeWishFromUser(userId, productId) {
+        return this.getUserById(userId).then(currentUser => {
+            return userCollection.updateOne(
+                {_id: id},
+                {
+                    $pull: {
+                        wishlists: {
+                            id: productId
+                        }
+                    }
+                }
+            )
+        })
+    },
+
+
+
 
     
 
