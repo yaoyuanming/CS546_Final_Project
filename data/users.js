@@ -39,9 +39,10 @@ let exportMethods = {
         if (!id) throw "No ID provided!";
 
         return users().then(userCollection => {
+            console.log(id)
             return userCollection.findOne({_id: id}).then(user => {
                 if (!user) throw "User not found";
-
+                //console.log(user)
                 return user;
             });
 
@@ -49,10 +50,11 @@ let exportMethods = {
     },
 
     //addNewUser
-    addNewUser(firstname, lastname, email, password) {
+    addNewUser(firstname, lastname, email) {
         return users().then(userCollection => {
+            //console.log("testing")
             let newUser = {
-                _id: uuid.v4(),
+                //_id: uuid.v4(),
                 firstname: firstname,
                 lastname: lastname,
                 email: email,
@@ -60,9 +62,11 @@ let exportMethods = {
                 cart:[],
                 reviews: []
             };
+            //console.log(newUser)
 
             return userCollection.insertOne(newUser)
                                  .then(InsertedUser => {
+                                     //console.log("inserted")
                                      return InsertedUser.insertedId;
                                  }).then(newId => {
                                      return this.getUserById(newId);
@@ -150,3 +154,5 @@ let exportMethods = {
     
     
 }
+
+module.exports = exportMethods;
