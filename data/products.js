@@ -22,7 +22,7 @@ module.exports = {
     //getAllProd
     getAllProd() {
         return products().then(productCollection => {
-            productCollection.find({}).toArary();
+            return productCollection.find({}).toArray();
         })
     },
 
@@ -31,8 +31,9 @@ module.exports = {
         if (!id) throw "No ID provided";
 
         return products().then(productCollection => {
-            productCollection.findOne({_id: id}).then(product => {
+            return productCollection.findOne({_id: id}).then(product => {
                 if(!product) throw "no product found";
+                //console.log(product)
                 return product;
             })
         })
@@ -42,7 +43,7 @@ module.exports = {
     addProd(title, descripiton ,category, price, quantity) {
         return products().then(productCollection => {
             let newProd = {
-                _id: uuid.v4(),
+                //_id: uuid.v4(),
                 title: title,
                 descripiton: descripiton,
                 category: category,
@@ -51,7 +52,6 @@ module.exports = {
                 rating: 0,
                 reviews: []
             };
-
             return productCollection.insertOne(newProd)
                    .then(newInsertedProd => {
                        return newInsertedProd.insertedId;
@@ -66,6 +66,7 @@ module.exports = {
     deleteProd(id) {
         return products().then(productCollection => {
             return productCollection.removeOne({_id: id}).then(deleteInfo => {
+                
                 if(deleteInfo.deletedCount === 0) {
                     throw "delete failed";
                 } 

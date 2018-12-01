@@ -39,7 +39,7 @@ let exportMethods = {
         if (!id) throw "No ID provided!";
 
         return users().then(userCollection => {
-            console.log(id)
+            //console.log(id)
             return userCollection.findOne({_id: id}).then(user => {
                 if (!user) throw "User not found";
                 //console.log(user)
