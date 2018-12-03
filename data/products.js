@@ -3,14 +3,14 @@
 */
 
 /*
-    * products
+    * products basic API
         - getAllProd
         - getProdById
         - addProd
         - deleteProd
         - updateProd
     * reviews
-        - TODO
+        - addReviewToProd
 */
 const mongoCollection = require('../config/mongoCollections');
 const products = mongoCollection.products;
@@ -104,6 +104,28 @@ module.exports = {
                        return this.getProdById(id);
                    })
         })
-    }
+    },
+
+    /* Reveiws */
+    
+    //addReviewToProd
+    addReviewToProd(productId, reviewId, reviewTitle) {
+        return products().then(productCollection => {
+            return productCollection.updateOne(
+                { _id: productId },
+                {
+                    $addToSet: {
+                        reviews: {
+                            id: reviewId,
+                            title: reviewTitle
+                        }
+                    }
+                }
+
+            )
+        })
+    },
+
+    
 }
 

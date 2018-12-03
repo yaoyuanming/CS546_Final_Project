@@ -2,6 +2,8 @@
 
 const connection = require('./config/mongoConnection');
 const products = require('./data/products');
+const reviews = require('./data/reviews');
+const users = require('./data/users');
 
 async function main() {
    const db = await connection();
@@ -23,6 +25,20 @@ async function main() {
     //console.log("deleted");
     //const del = await products.getProdById(newProd._id);
     //console.log("testing")
+
+    const newUser = await users.addNewUser("YD", "Li", "123@abc.com");
+    console.log(newUser);
+
+    const newReview = await reviews.addReview("testtitle", "this is the comment", 5, newUser._id, newPord2._id);
+    console.log(newReview);
+    const addeduser = await users.addReviewToUser(newUser._id, newReview._id, "testtitle");
+    console.log(addeduser);
+    //products.addReviewToProd(newPord2._id, newReview._id, "testtitle");
+    //console.log(newPord2);
+    const reviewId = await reviews.getReviewById(addeduser.reviews[0].id);
+    console.log(reviewId);
+
+    
 }
 
 main();

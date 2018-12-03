@@ -2,7 +2,7 @@
     Implementation for user DAO.
 */ 
 /*
-    * user
+    * user basic API
         - getAllUsers
         - getUserById
         - addNewUser
@@ -12,7 +12,7 @@
         - addWishToUser
         - removeWishFromUser
     * reviews
-        - TODO
+        - addReviewToUser
 
 */ 
 
@@ -89,7 +89,7 @@ let exportMethods = {
 
     //update user
     updateUser(id, updatedUser) {
-        return this.getUserById(id).then(currentUser => {
+        return users().then(userCollection => {
             let currentUser = {
                 firstname: updatedUser.firstname,
                 lastname: updatedUser.lastname,
@@ -97,12 +97,12 @@ let exportMethods = {
             };
 
             let updateCommand = {
-                $set: updatedUser
+                $set: currentUser
             };
 
             return userCollection.updateOne({_id: id}, updateCommand)
                    .then(() => {
-                       return getUserById(id);
+                       return this.getUserById(id);
                    })
         })
     },
@@ -111,7 +111,7 @@ let exportMethods = {
 
     //addWishToUser
     addWishToUser(userId, productId, productTitle) {
-        return this.getUserById(userId).then(currentUser => {
+        return users().then(userCollection => {
             return userCollection.updateOne(
                 {
                     _id: id
@@ -130,7 +130,7 @@ let exportMethods = {
 
     //removeWishFromUser
     removeWishFromUser(userId, productId) {
-        return this.getUserById(userId).then(currentUser => {
+        return users().then(userCollection => {
             return userCollection.updateOne(
                 {_id: id},
                 {
@@ -140,6 +140,40 @@ let exportMethods = {
                         }
                     }
                 }
+            )
+        })
+    },
+
+    addReviewToUser(userId, reviewId, reviewTitle) {
+        return users().then(userCollection => {
+            return userCollection.updateOne(
+                { _id: userId},
+                {
+                    $addToSet: {
+                        reviews: {
+                            id: reviewId,
+                            title: reviewTitle
+                        }
+                    }
+                }
+            )
+            .then(() => {
+                return this.getUserById(userId);
+            })
+        })
+    },
+
+    deleteReviewFromUser(userId, reviewId) {
+        return users().then(userCollection => {
+            return userCollection.updateOne(
+                { _id: userId },
+                {
+                    $pull: {
+                        reviews: {
+                            reviewId
+                        }
+                    }
+                } 
             )
         })
     },
