@@ -22,4 +22,5 @@ module.exports = {
   reviews: getCollectionFn("reviews"),
   orders: getCollectionFn("orders"),
   payment: getCollectionFn("payment"),
+  credential: getCollectionFn("credential"),
 };
