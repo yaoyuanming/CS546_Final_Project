@@ -14,7 +14,7 @@
 */
 const mongoCollection = require('../config/mongoCollections');
 const products = mongoCollection.products;
-const uuid = require('uuid');
+//const uuid = require('uuid');
 
 module.exports = {
     /* products */

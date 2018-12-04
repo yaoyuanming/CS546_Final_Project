@@ -1,4 +1,4 @@
-//Test for product
+//Test
 
 const connection = require('./config/mongoConnection');
 const products = require('./data/products');
@@ -6,6 +6,10 @@ const reviews = require('./data/reviews');
 const users = require('./data/users');
 const userCart = require('./data/userCart');
 const credential = require('./data/userCredentials');
+const order = require('./data/orders'); 
+const payment = require('./data/payment');
+
+
 
 async function main() {
    const db = await connection();
@@ -27,10 +31,13 @@ async function main() {
     console.log(allItemInCart);
     const add2 = await userCart.addItemToCart(newUser._id, newPord2._id);
     console.log(await users.getUserById(newUser._id))
-    console.log("******* Deleting All *******");
+    console.log("******* All items in cart *******");
 
-    const del1 = await userCart.emptyCart(newUser._id)
-    console.log(await users.getUserById(newUser._id))
+    const userWithItemInCart = await users.getUserById(newUser._id);
+    console.log(userWithItemInCart.cart);
+    
+    //const del1 = await userCart.emptyCart(newUser._id)
+    //console.log(await users.getUserById(newUser._id))
 
     console.log("*************** Credential ****************");
     const userCre = await credential.createNewCredential(newUser.email, "112233");
@@ -48,7 +55,16 @@ async function main() {
     const compareResult2 = await credential.comparePassword(newUser.email, "223344");
     console.log(compareResult2);
 
-    
+    const newOrder = await order.createNewOrder(newUser._id, userWithItemInCart.cart);
+    console.log(newOrder);
+    const newPayment = await payment.addPayment("123456778", newOrder._id);
+    console.log(newPayment);
+    const OrderwithPayment = await order.addPaymentToOrder(newPayment, newOrder._id);
+
+    console.log("*********** order **********")
+    console.log(await order.getOrderById(newOrder._id));
+
+
     
 
     
