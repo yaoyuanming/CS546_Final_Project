@@ -50,6 +50,7 @@ module.exports = {
                 price: price,
                 quantity: quantity,
                 rating: 0,
+                image: File(),
                 reviews: []
             };
             return productCollection.insertOne(newProd)
@@ -126,6 +127,10 @@ module.exports = {
         })
     },
 
+    //addImageToProd
+    addImageToProd(file) {
+        // TODO
+    }
     
 }
 
