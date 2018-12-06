@@ -1,12 +1,145 @@
-<!doctype <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css">
     <title>CS546</title>
 </head>
+
 <body>
-    
+    <!-- navbar -->
+    <nav class="navbar navbar-color navbar-toggleable-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            <span class="fa fa-home fa-md"></span>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <span class="fa fa-shopping-bag fa-md"></span>
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <span class="fa fa-user-circle fa-md"></span>
+                            My Account
+                        </a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a id="login-button">
+                        <span class="fa fa-sing-in"></span> Login
+                </a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <!-- login modal and form -->
+    <div id="login-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Login to Your Account</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm" action="/login" method="POST">
+                        <div class="form-group">
+                            <label class="sry-only" for="loginEmail">Email Address</label>
+                            <input type="email" class="form-control form-control-sm mr-1" name="loginEmail" id="loginEmail" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label class="sry-only" for="password">Email Address</label>
+                            <input type="password" class="form-control form-control-sm mr-1" name="password" id="password" placeholder="Enter password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
+                    <button style="margin:15px" type="button" class="btn btn-success btn-sm">Sign Up</button>
+                    <button style="margin:15px" type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header>
+        <div class="headerbox" id="top">
+            <div class="container">
+                <div class="row row-header">
+                    <div class="col-12 col-sm-6">
+                        <h1>CS546 Final(Name TBD)</h1>
+                        <p>(Description TBD) This is the final project for CS546</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{{body}}}
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-5 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-5">
+                    <h5>Contact Us</h5>
+                    <i class="fa fa-phone fa-lg"></i>  Tel.: 123-456-7890<br>
+                    <i class="fa fa-fax fa-lg"></i>  Fax.: 123-456-7890<br>
+                    <i class="fa fa-envelope fa-lg"></i>  Email: cs546@stevens.edu<br>                    
+                </div>
+                <div class="col com-sm-5 align-self-center">
+                    <a class="btn btn-social-icon btn-google-plus" href="http://www.google.com"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a>
+                    <a class="btn btn-social-icon btn-twitter" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a>
+                    <a class="btn btn-social-icon btn-youtube" href="http://www.youtube.com"><i class="fa fa-youtube"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <br>
+                <br>
+                <p>© Copyright 2015 CS546 Final Project</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery, Tether, and Bootstrap JS. -->
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../public/js/scripts.js"></script>
 </body>
+
 </html>
