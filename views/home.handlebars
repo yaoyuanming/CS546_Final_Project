@@ -1,0 +1,23 @@
+
+
+<div class="row row-content">
+    <div class="col">
+        <div id="mycarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {{#each products}}
+                <div class="caoursel-item active">
+                    <!-- image only for testing purpose -->
+                    <img class="d-block w-100" src="../public/img/WallPaper.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5> {{this.title}} </h5>
+                        <p> {{this.descripiton}} </p>
+                    </div>
+                </div>
+
+                {{/each}}
+
+            </div>
+           
+        </div>
+    </div>
+</div>

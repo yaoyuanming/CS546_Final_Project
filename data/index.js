@@ -17,7 +17,7 @@ let constructorMethod = app => {
 module.exports = {
     users: require("./users"),
     products: require("./products"),
-    credentials: require("./credentials"),
+    credentials: require("./userCredentials"),
     reviews: require("./reviews"),
     userCart: require("./userCart"),
     orders: require("./orders"),

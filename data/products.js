@@ -40,17 +40,17 @@ module.exports = {
     },
 
     //addProd
-    addProd(title, descripiton ,category, price, quantity) {
+    addProd(title, description ,category, price, quantity, image) {
         return products().then(productCollection => {
             let newProd = {
                 //_id: uuid.v4(),
                 title: title,
-                descripiton: descripiton,
+                description: description,
                 category: category,
                 price: price,
                 quantity: quantity,
                 rating: 0,
-                image: File(),
+                image: image,
                 reviews: []
             };
             return productCollection.insertOne(newProd)
@@ -127,10 +127,7 @@ module.exports = {
         })
     },
 
-    //addImageToProd
-    addImageToProd(file) {
-        // TODO
-    }
+    
     
 }
 

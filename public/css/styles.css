@@ -23,3 +23,36 @@ body {
     margin: 0px auto;
     padding: 20px 0px;
 }
+
+.carousel {
+    background-color: #105826;   
+}
+
+.carousel .carousel-item {
+    height: 300px;
+    position: absolute;
+    top:0;
+    right: 0;
+    min-height: 300px;
+}
+
+#carousel-button {
+    right: 0px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.row-content {
+    margin: 0px auto;
+    padding: 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px
+}
+
+.carousel-caption {
+    position: static;
+}
+
+.item {
+    display: block;
+}
