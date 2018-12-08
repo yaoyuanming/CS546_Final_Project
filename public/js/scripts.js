@@ -5,7 +5,7 @@ $("#login-button").click(function() {
 
 // carousel on homepage
 window.onload = function() {
-    $('$mycarousel').carousel();
+    $('#mycarousel').carousel();
    
 }
 

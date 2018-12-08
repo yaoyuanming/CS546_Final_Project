@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="Navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/home" style="color: white">
                             <span class="fa fa-home fa-md"></span>
                             Home
                         </a>
@@ -44,9 +44,15 @@
                 </ul>
                 <span class="navbar-text">
                     <a id="login-button">
-                        <span class="fa fa-sing-in"></span> Login
+                        <span class="fa fa-sign-in"></span> Login  
                 </a>
                 </span>
+                <span class="navbar-text" style="margin-left:15px">
+                    <a id="signup-button" href="/signup" style="color: white">
+                        <span class="fa fa-user"></span> Signup
+                </a>
+                </span>
+                
             </div>
         </div>
     </nav>
@@ -67,14 +73,13 @@
                             <input type="email" class="form-control form-control-sm mr-1" name="loginEmail" id="loginEmail" placeholder="Enter email">
                         </div>
                         <div class="form-group">
-                            <label class="sry-only" for="password">Email Address</label>
+                            <label class="sry-only" for="password">Password</label>
                             <input type="password" class="form-control form-control-sm mr-1" name="password" id="password" placeholder="Enter password">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
-                    <button style="margin:15px" type="button" class="btn btn-success btn-sm">Sign Up</button>
                     <button style="margin:15px" type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
 
                 </div>
