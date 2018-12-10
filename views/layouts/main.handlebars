@@ -44,7 +44,7 @@
                 </ul>
                 <span class="navbar-text">
                     <a id="login-button">
-                        <span class="fa fa-sign-in"></span> Login  
+                        <span class="fa fa-sign-in"></span> Login
                 </a>
                 </span>
                 <span class="navbar-text" style="margin-left:15px">
@@ -52,13 +52,13 @@
                         <span class="fa fa-user"></span> Signup
                 </a>
                 </span>
-                
+
             </div>
         </div>
     </nav>
     <!-- login modal and form -->
     <div id="login-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog" >
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login to Your Account</h4>
@@ -67,7 +67,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="loginForm" action="/login" method="POST">
+                    <form id="loginForm" action="/home" method="POST">
                         <div class="form-group">
                             <label class="sry-only" for="loginEmail">Email Address</label>
                             <input type="email" class="form-control form-control-sm mr-1" name="loginEmail" id="loginEmail" placeholder="Enter email">
@@ -76,10 +76,11 @@
                             <label class="sry-only" for="password">Password</label>
                             <input type="password" class="form-control form-control-sm mr-1" name="password" id="password" placeholder="Enter password">
                         </div>
+                        <button type="submit" value="login" class="btn btn-primary btn-sm">Sign In</button>
+
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
                     <button style="margin:15px" type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
 
                 </div>
@@ -101,8 +102,8 @@
         </div>
     </header>
 
-    <div class = "container">
-            {{{body}}}
+    <div class="container">
+        {{{body}}}
 
     </div>
     <!-- footer -->
@@ -112,23 +113,23 @@
                 <div class="col-5 offset-1 col-sm-2">
                     <h5>Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/products">Products</a></li>
                         <li><a href="#">My Account</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-5">
                     <h5>Contact Us</h5>
-                    <i class="fa fa-phone fa-lg"></i>  Tel.: 123-456-7890<br>
-                    <i class="fa fa-fax fa-lg"></i>  Fax.: 123-456-7890<br>
-                    <i class="fa fa-envelope fa-lg"></i>  Email: cs546@stevens.edu<br>                    
+                    <i class="fa fa-phone fa-lg"></i> Tel.: 123-456-7890<br>
+                    <i class="fa fa-fax fa-lg"></i> Fax.: 123-456-7890<br>
+                    <i class="fa fa-envelope fa-lg"></i> Email: cs546@stevens.edu<br>
                 </div>
                 <div class="col com-sm-5 align-self-center">
                     <a class="btn btn-social-icon btn-google-plus" href="http://www.google.com"><i class="fa fa-google-plus"></i></a>
                     <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a>
                     <a class="btn btn-social-icon btn-twitter" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a>
                     <a class="btn btn-social-icon btn-youtube" href="http://www.youtube.com"><i class="fa fa-youtube"></i></a>
-                    
+
                 </div>
             </div>
         </div>

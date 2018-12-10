@@ -32,7 +32,10 @@ let exportedMethods = {
     //compare
     async comparePassword(email, password) {
         const credentialCollection = await credentials();
+        
+        
         const cre = await credentialCollection.findOne({_id: email}, {_id:1, password: 1});
+        
         if (bcrypt.compareSync(password, cre.password)) {
             return Promise.resolve("Password Machted");
         } else {
