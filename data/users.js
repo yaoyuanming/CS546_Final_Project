@@ -49,18 +49,6 @@ let exportMethods = {
         });
     },
 
-    //getUserByEmail
-    getUserByEmail(email) {
-        if (!email) throw "No Email provided";
-
-        return users().then(userCollection => {
-            return userCollection.findOne({email: email}).then(user => {
-                if(!user) throw "User Not Found";
-                return user;
-            })
-        })
-    },
-
     //addNewUser
     addNewUser(firstname, lastname, email) {
         return users().then(userCollection => {

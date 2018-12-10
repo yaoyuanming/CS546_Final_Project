@@ -36,21 +36,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">
+                        <a class="nav-link" href="/myaccount" style="color: white" >
                             <span class="fa fa-user-circle fa-md"></span>
                             My Account
                         </a>
                     </li>
                 </ul>
-                {{#if user}}
-                <span class="navbar-text">
-                    <a id="logout-button" href="/logout">
-                        <span class="fa fa-sign-out-alt"></span>
-                        Logout
-                    </a>
-                </span>
-                
-                {{else}}
                 <span class="navbar-text">
                     <a id="login-button">
                         <span class="fa fa-sign-in"></span> Login
@@ -61,7 +52,7 @@
                         <span class="fa fa-user"></span> Signup
                 </a>
                 </span>
-                {{/if}}
+
             </div>
         </div>
     </nav>
@@ -124,7 +115,7 @@
                     <ul class="list-unstyled">
                         <li><a href="/home">Home</a></li>
                         <li><a href="/products">Products</a></li>
-                        <li><a href="#">My Account</a></li>
+                        <li><a href="/myaccount">My Account</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-5">

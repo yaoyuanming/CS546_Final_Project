@@ -11,7 +11,6 @@ const payment = require('../data/payment');
 
 async function main() {
    const db = await connection();
-   
    await db.dropDatabase();
 
    const newProd = await products.addProd("testProd", "This is the description for testProd, perfect for testing purpose", "food", "1.2", "1");

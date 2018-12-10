@@ -22,16 +22,7 @@ let exportedMethods = {
     // getCredentialByEmail
     getCredentialByEamil(email) {
         return credentials().then(credentialCollection => {
-            return credentialCollection.findOne({_id: email}, {_id:1, password:1}).then(cre => {
-                console.log("cre.password");
-                console.log(cre.password);
-                if (cre.password === null) {
-                    
-                    Promise.reject("not registered!")
-                } else {
-                    return cre;
-                }
-            })
+            return credentialCollection.findOne({_id: email}, {_id:1, password:1});
         })
         .catch(() => {
             return Promise.reject(`Cannot find credential for email ${email}` );
@@ -44,14 +35,11 @@ let exportedMethods = {
         
         
         const cre = await credentialCollection.findOne({_id: email}, {_id:1, password: 1});
-        if(!cre) {
-            return undefined;
-        }
-        else if (bcrypt.compareSync(password, cre.password)) {
+        
+        if (bcrypt.compareSync(password, cre.password)) {
             return Promise.resolve("Password Machted");
         } else {
-            Promise.reject("Incorrect Password");
-            return undefined;
+            return Promise.reject("Incorrect Password")
         }
     },
 

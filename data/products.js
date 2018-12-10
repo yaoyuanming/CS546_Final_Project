@@ -38,7 +38,18 @@ module.exports = {
             })
         })
     },
+    //getProdByCat
+    getProdByCat(cat){
+        if (!cat) throw "No Category provided";
 
+        return products().then(productCollection => {
+            return productCollection.findOne({category: category}).then(product => {
+                if(!product) throw "no product found";
+                //console.log(product)
+                return product;
+            })
+        })
+    }
     //addProd
     addProd(title, description ,category, price, quantity, image) {
         return products().then(productCollection => {
