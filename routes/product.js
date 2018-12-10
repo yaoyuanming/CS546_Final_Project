@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 const products = data.products;
+const user = data.users;
 
 router.get("/products", async (req, res) => {
-    var allProd = await productData.getAllProd();
+    var allProd = await products.getAllProd();
     
     if(typeof req.cookies.AuthCookie === 'undefined') {
         
