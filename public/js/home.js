@@ -1,5 +1,5 @@
 // carousel on homepage
 window.onload = function() {
-    $('.carousel').carousel({interval: 2000})
+    $('#mycarousel').carousel({interval: 2000})
 }
 
