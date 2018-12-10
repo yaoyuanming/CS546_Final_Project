@@ -13,6 +13,10 @@ router.get("/", (req, res) => {
 
 });
 
+router.get("/wishlist", (req, res) => {
+    res.render('wishlist');
+})
+
 
 
 module.exports = router;

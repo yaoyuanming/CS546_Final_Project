@@ -4,7 +4,7 @@ const signupRoutes = require("./signup");
 const productRoutes = require("./product");
 const myaccountRoutes = require("./myaccount");
 const cartRoutes = require("./cart");
-const wishlishRoutes = require("./wishlish")
+const wishlishRoutes = require("./wishlist")
 
 const constructorMethod = app => {
     app.use("/test", testRoutes),
