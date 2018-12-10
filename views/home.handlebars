@@ -1,6 +1,11 @@
     <script src="public/js/home.js"></script>
     
-
+{{#if error}}
+    <div id="loginError">
+        <h2> Error </h2>
+        {{ error }}
+    </div>
+    {{/if}}
 
 <div class="row row-content">
     <div class="col">

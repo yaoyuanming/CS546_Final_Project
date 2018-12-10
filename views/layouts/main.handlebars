@@ -42,6 +42,15 @@
                         </a>
                     </li>
                 </ul>
+                {{#if user}}
+                <span class="navbar-text">
+                    <a id="logout-button" href="/logout">
+                        <span class="fa fa-sign-out-alt"></span>
+                        Logout
+                    </a>
+                </span>
+                
+                {{else}}
                 <span class="navbar-text">
                     <a id="login-button">
                         <span class="fa fa-sign-in"></span> Login
@@ -52,7 +61,7 @@
                         <span class="fa fa-user"></span> Signup
                 </a>
                 </span>
-
+                {{/if}}
             </div>
         </div>
     </nav>
