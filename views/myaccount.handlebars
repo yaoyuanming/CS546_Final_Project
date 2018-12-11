@@ -1,14 +1,16 @@
+{{#if user}}
+
 <div class="row row-content">
     
     <div class="col-md-3" style="margin: 15px;">
         <div class="card-body">
-                <h5 class="card-title"> Last Name </h5>
-                <h5 class="card-title"> First name </p>
+                <h5 class="card-title"> Your Last Name: {{user.lastname}} </h5>
+                <h5 class="card-title"> Your First name: {{user.firstname}} </p>
 
             </div>
             <ul class="list-group list-group-flush">
                 
-                <li class="list-group-item">  Email </li>
+                <li class="list-group-item"> Your Email: {{user.email}} </li>
                 <li class="list-group-item">
                     <a href="/cart"> View Your Cart </a> 
                 </li>
@@ -21,3 +23,4 @@
     </div>
     
 </div>
+{{/if}}

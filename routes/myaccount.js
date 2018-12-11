@@ -1,16 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const data = require("../data");
-const users = data.users;
+const user = data.users;
+const productData = data.products;
 
-router.get("/", (req, res) => {
-    // user.getUserById(id).then(user=>{
-    	res.render('myaccount', {
-            // user: allProd
-        })
+router.get("/", async (req, res) => {
+    	var allProd = await productData.getAllProd();
+        var frontPageProd = allProd.slice(0,3);
+        if(typeof req.cookies.AuthCookie === 'undefined') {
+            
+            res.render('home', {products: frontPageProd});
+        } else {
+            
+            var cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+            console.log(cookieUser);
+            res.render('myaccount', { user: cookieUser});
+        }
     // })
-    
-
 });
 
 router.get("/wishlist", (req, res) => {
