@@ -5,6 +5,8 @@ const productData = data.products;
 const credentialData = data.credentials;
 const user = data.users;
 
+
+
 router.get("/home", async (req, res) => {
     var allProd = await productData.getAllProd();
     var frontPageProd = allProd.slice(0,3);
@@ -35,7 +37,7 @@ router.post('/home', async (req, res) => {
 
         res.cookie("AuthCookie", req.body.loginEmail);
     
-        res.render('private', {
+        res.render('myaccount', {
             user: loginUser
         })
     } else {

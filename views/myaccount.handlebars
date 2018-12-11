@@ -1,21 +1,30 @@
-{{#if user}}
 
+
+{{#if user}}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/home">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">My Account</li>
+    </ol>
+</nav>
 <div class="row row-content">
     
     <div class="col-md-3" style="margin: 15px;">
         <div class="card-body">
-                <h5 class="card-title"> Your Last Name: {{user.lastname}} </h5>
-                <h5 class="card-title"> Your First name: {{user.firstname}} </p>
+                <h5 class="card-title"> My Last Name: {{user.lastname}} </h5>
+                <h5 class="card-title"> My First name: {{user.firstname}} </p>
 
             </div>
             <ul class="list-group list-group-flush">
                 
-                <li class="list-group-item"> Your Email: {{user.email}} </li>
+                <li class="list-group-item"> My Email: {{user.email}} </li>
                 <li class="list-group-item">
-                    <a href="/cart"> View Your Cart </a> 
+                    <a href="/cart/{{user._id}}"> View My Cart </a> 
                 </li>
                 <li class="list-group-item"> 
-                    <a href="/wishlist"> View Your WishList </a> 
+                    <a href="/wishlist/{{user._id}}"> View My WishList </a> 
                 </li>
 
             </ul>

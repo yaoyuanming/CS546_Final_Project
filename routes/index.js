@@ -13,7 +13,7 @@ const constructorMethod = app => {
     app.use("/", productRoutes),
     app.use("/myaccount",myaccountRoutes),
     app.use("/cart",cartRoutes),
-    app.use("/wishlish",wishlishRoutes)
+    app.use("/wishlist",wishlishRoutes)
 }
 
 module.exports = constructorMethod;

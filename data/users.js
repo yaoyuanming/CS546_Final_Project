@@ -55,8 +55,13 @@ let exportMethods = {
 
         return users().then(userCollection => {
             return userCollection.findOne({email: email}).then(user => {
-                if(!user) throw "User Not Found";
-                return user;
+                if(!user) {
+                    
+                    return undefined;
+                }
+                else {
+                    return user;
+                }
             })
         })
     },
