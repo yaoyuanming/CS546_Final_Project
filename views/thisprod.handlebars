@@ -1,0 +1,27 @@
+<div class="row row-content">
+    <!-- {{products}} -->
+    <div class="col-md-3" style="margin: 15px;">
+        <div class="card" style="width: 18rem;">
+            <!--<div class="divprodimg"> -->
+                <a href="/products/{{this.title}}">
+                    <img class="card-image-top" src="../public/img/{{thisProd.title}}.jpg" alt="card image" style="width:170px;height:130px">
+                </a>
+            <!--</div>-->
+                 
+           
+           
+            <div class="card-body">
+                <h5 class="card-title"> {{thisProd.title}} </h5>
+                <p class="card-text"> {{thisProd.description}} </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: $ {{thisProd.price}} </li>
+                <li class="list-group-item">Category:  {{thisProd.category}} </li>
+                <li class="list-group-item"> {{thisProd.quantity}} Left</li>
+
+            </ul>
+        </div>
+    </div>
+   
+</div>
