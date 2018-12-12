@@ -1,4 +1,4 @@
-
+    
 {{#if error}}
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -6,6 +6,7 @@
         {{ error }}
     </div>
     {{/if}}
+
         <div class = "row row-content">
             <div class = "col">
                 <div id = "mycarousel" class = "carousel slide" data-ride = "carousel">
@@ -16,17 +17,21 @@
                                 <h1 style="color:black"> BAPE 
                                     <span class = "badge badge-danger">NEW</span>
                                     <span class = "badge badge-pill badge-default">$249</span>
+
                                 </h1>
+                                        
+    
                             </div>
                         </div>
                         {{#each products}}
                         <div class = "carousel-item">
                             <img class = "d-block img-fluid" src = "public/img/{{this.title}}.jpg" alt = "uthappizza">
                             <div class = "carousel-caption d-none d-md-block">
-                                <h2 style="color: black; text-transform: uppercase"> {{this.title}}
+                                <h2 style="color: black"> {{this.title}}
                                     <span class = "badge badge-danger">HOT</span>
                                     <span class = "badge badge-pill badge-default">${{this.price}}</span>
                                 </h2>
+                                        
                             </div>
                         </div>
                         {{/each}}             

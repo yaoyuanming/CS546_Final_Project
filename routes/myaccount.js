@@ -25,14 +25,14 @@ router.get('/logout', (req, res) => {
     res.render('logout', {title: 'logout'})
 });
 
-module.exports = router;
-
 
 
 router.get("/wishlist", (req, res) => {
     res.render('wishlist');
 })
 
-
+router.get("/cart", (req, res) => {
+    res.render('cart');
+})
 
 module.exports = router;

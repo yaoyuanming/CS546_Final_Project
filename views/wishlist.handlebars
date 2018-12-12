@@ -1,20 +1,41 @@
-<div class="row row-content">
-    {{#each products}}
-    <div class="col-md-3" style="margin: 15px;">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../public/img/test.jpg" alt="card image">
-            <div class="card-body">
-                <h5 class="card-title"> {{this.title}} </h5>
-                <p class="card-text"> {{this.description}} </p>
 
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Price: $ {{this.price}} </li>
-                <li class="list-group-item">Category:  {{this.category}} </li>
-                <li class="list-group-item"> {{this.quantity}} Left</li>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/home">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/myaccount/{{user._id}}">My Account</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">My Cart</li>
+    </ol>
+</nav>
 
-            </ul>
-        </div>
+{{#if error}}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong> Error </strong>
+        {{ error }}
     </div>
+{{/if}}
+<div class="row row-content">
+
+    {{#each wishProducts}}
+        <div class="col-md-3" style="margin: 15px;">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="../public/img/test.jpg" alt="card image">
+                <div class="card-body">
+                    <h5><a href="/posts/{{_id}}">{{title}}</a></h5>
+                    <p class="card-text"> {{description}} </p>
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Price: $ {{price}} </li>
+                    <li class="list-group-item">Category:  {{category}} </li>
+                    <li class="list-group-item"> {{quantity}} Left</li>
+
+                </ul>
+            </div>
+        </div>
     {{/each}}
 </div>

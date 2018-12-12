@@ -16,27 +16,9 @@ router.get("/products", async (req, res) => {
         var cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
         res.render('products', {products: allProd, user: cookieUser});
     }
-    
 });
 
-router.get("/products/:title", async (req, res) => {
 
-	var thisProd = await products.getProdByTitle(req.params.title);
-
-
-	if(typeof req.cookies.AuthCookie === 'undefined') {
-        
-        res.render('products', {products: thisProd});
-
-    } else {
-        
-        console.log(req.cookies.AuthCookie)
-        var cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
-         console.log(thisProd);
-        res.render('thisprod', {user: cookieUser, thisProd: thisProd});
-    }
-
-});
 
 
 //TODO: Single product Info page

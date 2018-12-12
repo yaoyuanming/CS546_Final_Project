@@ -6,6 +6,13 @@
         <li class="breadcrumb-item active" aria-current="page">Sign up</li>
     </ol>
 </nav>
+{{#if error}}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong> Error </strong>
+        {{ error }}
+    </div>
+{{/if}}
 <div class="row row-content">
     <div class="col-12">
         <h3>Sign up</h3>
