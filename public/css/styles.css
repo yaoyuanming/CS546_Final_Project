@@ -25,7 +25,7 @@ body {
 }
 
 .carousel {
-    background-color: #1B8D3B; }
+    background-color: white; }
     .carousel .carousel-item {
       height: 600px; }
       .carousel .carousel-item img {
