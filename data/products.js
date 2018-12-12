@@ -38,7 +38,31 @@ module.exports = {
             })
         })
     },
+    //getProdByTitle
+    getProdByTitle(title){
+        if (!title) throw "No title provided";
 
+        return products().then(productCollection => {
+            return productCollection.findOne({title: title}).then(product => {
+                if(!product) throw "no product found";
+                //console.log(product)
+                return product;
+            })
+        })
+    },
+    //getProdByCat
+    getProdByCat(category){
+        console.log(category);
+        if (!category) throw "No category provided";
+
+        return products().then(productCollection => {
+            return productCollection.find({category: category}).toArray().then(product => {
+                if(!product) throw "no product found";
+                //console.log(product)
+                return product;
+            })
+        })
+    },
     //addProd
     addProd(title, description ,category, price, quantity, image) {
         return products().then(productCollection => {
