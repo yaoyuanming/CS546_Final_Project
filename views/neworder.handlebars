@@ -1,0 +1,14 @@
+<div class="row row-content">
+    <h2>Your Order</h2>
+</div>
+
+<div class="card" style="width: 28rem">
+    <ul class="list-group list-group-flush">
+        {{#each cart}}
+        <li class="list-group-item">{{this.title}}</li>
+        {{/each}}
+    </ul>
+    <div class="card-body">
+        <a class="btn btn-primary" href="/payment/{{user._id}}">Go To Payment</a>
+    </div>
+</div>

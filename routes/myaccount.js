@@ -25,6 +25,8 @@ router.get('/logout', (req, res) => {
     res.render('logout', {title: 'logout'})
 });
 
+module.exports = router;
+
 
 
 router.get("/wishlist", (req, res) => {

@@ -16,6 +16,7 @@ router.get("/products", async (req, res) => {
         var cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
         res.render('products', {products: allProd, user: cookieUser});
     }
+    
 });
 
 
