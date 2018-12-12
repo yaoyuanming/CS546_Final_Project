@@ -1,49 +1,52 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="/home">Home</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Products</li>
-    </ol>
-</nav>
-
-<div class="row row-content">
-    <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
+<!-- <div class="row row-content">
+<nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header" class="col-md-3">
         <a class="navbar-brand" href="#">Category</a>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-2">
         <ul class="nav navbar-nav">    
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    MEN
+                    CLOTHING
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">TOP</a></li>
-                    <li><a href="#">BOTTOM</a></li>
-                    <li><a href="#">SHOES</a></li>
+                    <li><a href="#">HOODIE</a></li>
+                    <li><a href="#">PANTS</a></li>
                 </ul>
             </li>
+            <li><a href="#">HAT</a></li>
+            <li><a href="#">SHOES</a></li>
+            <li><a href="#">ACCESSORIES</a></li>
+        </ul>
+    </div>
+</nav>
+</div> -->
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">CATEGORY</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    WOMEN
-                    <b class="caret"></b>
+                    CLOTHING
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">TOP</a></li>
-                    <li><a href="#">BOTTOM</a></li>
-                    <li><a href="#">SHOES</a></li>
+                    <li><a href="http://localhost:3000/productsbycat/hoodie">HOODIE</a></li>
+                    <li><a href="http://localhost:3000/productsbycat/pants">PANTS</a></li>
                 </ul>
             </li>
-            <li><a href="#">Accessories</a></li>
-            <li><a href="#">Special</a></li>
+            <<li><a href="http://localhost:3000/productsbycat/hat">HAT</a></li>
+            <li><a href="http://localhost:3000/productsbycat/shoes">SHOES</a></li>
+            <li><a href="http://localhost:3000/productsbycat/accessories">ACCESSORIES</a></li>
+            
         </ul>
     </div>
     </div>
 </nav>
-</div>
 
 <div class="row row-content">
     {{#each products}}
