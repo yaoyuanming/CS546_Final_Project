@@ -52,16 +52,23 @@
     {{#each products}}
     <div class="col-md-3" style="margin: 15px;">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../public/img/test.jpg" alt="card image">
+            <!--<div class="divprodimg"> -->
+                <a href="/products/{{this.title}}">
+                    <img class="card-image-top" src="../public/img/{{this.title}}.jpg" alt="card image" style="width:170px;height:130px">
+                </a>
+            <!--</div>-->
+                 
+           
+           
             <div class="card-body">
                 <h5 class="card-title"> {{this.title}} </h5>
-                <p class="card-text"> {{this.description}} </p>
+                <!-- <p class="card-text"> {{this.description}} </p> -->
 
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: $ {{this.price}} </li>
-                <li class="list-group-item">Category:  {{this.category}} </li>
-                <li class="list-group-item"> {{this.quantity}} Left</li>
+                <!-- <li class="list-group-item">Category:  {{this.category}} </li>
+                <li class="list-group-item"> {{this.quantity}} Left</li> -->
 
             </ul>
         </div>
