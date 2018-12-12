@@ -7,6 +7,7 @@ const cartRoutes = require("./cart");
 const wishlishRoutes = require("./wishlist")
 const paymentRoutes = require("./payment");
 const neworderRoutes = require("./newOrder");
+const productsbycatRoutes = require("./productsbycat")
 
 const constructorMethod = app => {
     app.use("/test", testRoutes),
@@ -15,9 +16,10 @@ const constructorMethod = app => {
     app.use("/", productRoutes),
     app.use("/myaccount",myaccountRoutes),
     app.use("/cart",cartRoutes),
-    app.use("/wishlist",wishlishRoutes)
-    app.use("/payment", paymentRoutes);
-    app.use("/neworder", neworderRoutes);
+    app.use("/wishlist",wishlishRoutes),
+    app.use("/payment", paymentRoutes),
+    app.use("/neworder", neworderRoutes),
+    app.use("/productsbycat",productsbycatRoutes)
 }
 
 module.exports = constructorMethod;
