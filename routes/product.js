@@ -3,6 +3,10 @@ const router = express.Router();
 const data = require("../data");
 const products = data.products;
 const user = data.users;
+const reviewData = data.reviews;
+
+
+
 
 router.get("/products", async (req, res) => {
     var allProd = await products.getAllProd();
@@ -13,10 +17,50 @@ router.get("/products", async (req, res) => {
     } else {
         
         console.log(req.cookies.AuthCookie)
-        var cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
         res.render('products', {products: allProd, user: cookieUser});
     }
 });
+
+var singleprod;
+var cookieUser; 
+
+router.get("/products/:id", async (req, res) => {
+     singleprod = await products.getProdById(req.params.id);
+    //console.log(req.params.id)
+    //console.log(req.params.id)
+    var reviewForProd = await reviewData.getReviewByProdId(singleprod._id);
+    console.log("cookieUser");
+    if(typeof req.cookies.AuthCookie === 'undefined') {
+        
+        res.render('thisprod', {thisProd: singleprod, reviews:reviewForProd});
+    } else {
+        cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        res.render('thisprod', {thisProd: singleprod, reviews:reviewForProd, user: cookieUser})
+        
+    }
+});
+
+router.post("/products/reviews",async (req, res) => {
+    console.log("testing123123")
+    console.log(cookieUser);
+    var newRev = await reviewData.addReview(req.body.title, req.body.review, req.body.rating, cookieUser._id, singleprod._id);
+    //console.log(newRev);
+    var revtouser = await user.addReviewToUser(cookieUser._id, newRev._id, newRev.title);
+    console.log(newRev._id);;
+    var revtoprod = await products.addReviewToProd(singleprod._id, newRev._id, newRev.title);
+    console.log("testing123123")
+    res.json({
+        user: cookieUser,
+        product: singleprod,
+        review: req.body,
+        date: new Date()
+    })
+});
+
+
+
+
 
 
 

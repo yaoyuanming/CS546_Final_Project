@@ -25,7 +25,7 @@ async function main1() {
   const camphat = await products.addProd("camphat", "This is a camphat", "hat", "74", "25");
   const coinbag = await products.addProd("coinbag", "This is a coinbag", "accessories", "123", "26");
   const handwarmer = await products.addProd("handwarmer", "This is a blue handwarmer", "accessories", "6", "25");
-  const kaws = await products.addProd("kaws", "This is a kaws toy", "accessories", "567", "23");
+  //const kaws = await products.addProd("kaws", "This is a kaws toy", "accessories", "567", "23");
   const keychain = await products.addProd("keychain", "This is a keychain", "accessories", "3", "2");
   //const  = await products.addProd("", "", "", "", "");
   const kith = await products.addProd("kith", "A tshirt from kith", "hoodie", "18", "6");
@@ -47,7 +47,12 @@ async function main1() {
     //console.log(newUser);
   const testCre = await credential.createNewCredential("123@abc.com", "password");
 
+  const review = await reviews.addReview("test", "This is a testing review", 3, newUser._id, kith._id);
+  const addrevewtokith = await products.addReviewToProd(kith._id, review._id);
+  console.log(await reviews.getReviewByProdId(kith._id));
 
+  const review2 = await reviews.addReview("test2", "This is a testing review2", 3, newUser._id, kith._id);
+  const addrevewtokith2 = await products.addReviewToProd(kith._id, review2._id);
 
 
 }

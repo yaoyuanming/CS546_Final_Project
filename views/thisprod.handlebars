@@ -1,27 +1,114 @@
-<div class="row row-content">
-    <!-- {{products}} -->
-    <div class="col-md-3" style="margin: 15px;">
-        <div class="card" style="width: 18rem;">
-            <!--<div class="divprodimg"> -->
-                <a href="/products/{{this.title}}">
-                    <img class="card-image-top" src="../public/img/{{thisProd.title}}.jpg" alt="card image" style="width:170px;height:130px">
-                </a>
-            <!--</div>-->
-                 
-           
-           
-            <div class="card-body">
-                <h5 class="card-title"> {{thisProd.title}} </h5>
-                <p class="card-text"> {{thisProd.description}} </p>
+<!-- {{products}} -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/home">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/products">Products</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{{thisProd.title}}</li>
+    </ol>
 
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Price: $ {{thisProd.price}} </li>
-                <li class="list-group-item">Category:  {{thisProd.category}} </li>
-                <li class="list-group-item"> {{thisProd.quantity}} Left</li>
+</nav>
+{{#if error}}
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong> Error </strong> {{ error }}
+</div>
+{{/if}}
 
-            </ul>
+<div class="card-group" style="margin: 10px">
+    <div class="card" style="width: 25rem;">
+        <!--<div class="divprodimg"> -->
+        <img class="card-img-top" src="../public/img/{{thisProd.title}}.jpg" alt="card image" style="width:360px;height:240px">
+        </a>
+        <!--</div>-->
+
+
+
+        <div class="card-body"style="margin:15px">
+            <h5 class="card-title"> {{thisProd.title}} </h5>
+            <p class="card-text"> {{thisProd.description}} </p>
+
         </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Price: $ {{thisProd.price}} </li>
+            <li class="list-group-item">Category: {{thisProd.category}} </li>
+            <li class="list-group-item"> {{thisProd.quantity}} Left</li>
+            <li class="list-group-item"> 
+                <a>
+                    Add To Cart
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a>
+                    Add To WishList
+                </a>
+            </li>
+
+
+        </ul>
     </div>
-   
+    <div class="card" style="width:25rem" id="reviewCard">
+        <div class="card-header">
+            <h4>Reviews</h4>
+        </div>
+        {{#if reviews}}
+        <div class="card-body" style="margin:15px" id="cardbody">
+             {{#each reviews}}
+
+            <div class="card-title">
+                <h5>{{this.title}}</h5>
+            </div>
+            <div class="card-text">
+                {{this.user.name}} : {{this.comment}}
+            </div>
+            <div class="card-text">
+                Rating: {{this.rating}}
+            </div>
+            <div class="card-text">
+                {{this.date}}
+            </div>
+            <br/>
+            {{/each}}
+
+        </div>
+        {{else}}
+        <div class="card-body" style="margin:15px">
+            <div class="card-text">
+                No reviews posted yet!
+            </div>
+        </div>
+        {{/if}}
+
+
+        {{#if user}}
+        <form id="reviewForm" style="margin:15px">
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Your Review Title..">
+                </div>
+                <div class="col-md-3">
+                    <select type="text" class="form-control" id="rate" name="rate" placeholder="Rating..">
+                        <option selected>Rating...</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea name="newReview" id="newReview" rows="8" cols="50" placeholder="Your Reviews...."></textarea>
+            </div>
+            <div class="form-group">
+                    <button id="review-button" type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+            </div>
+        </form>
+        {{/if}}
+    </div>
 </div>

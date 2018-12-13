@@ -44,10 +44,7 @@ let exportMethods = {
                             id: userId,
                             name: `${reviewer.firstname} ${reviewer.lastname}`
                         },
-                        prod: {
-                            id: productId,
-                            name: `${reviewedProd.title}`
-                        },
+                        productId: productId,
                         date: new Date(),
                     };
                     return reviewCollection.insertOne(newReview)
@@ -70,6 +67,15 @@ let exportMethods = {
                 } else {
                     // do nothing
                 }
+            })
+        })
+    },
+
+    getReviewByProdId(id) {
+        return reviews().then(reviewCollection => {
+            return reviewCollection.find({productId: id}).toArray().then(reviews => {
+                if (!reviews) throw  "No review found!"
+                else return reviews;
             })
         })
     }

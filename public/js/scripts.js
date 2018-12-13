@@ -12,6 +12,44 @@ $(document).ready(function() {
     })
 })
 
+
+
+
+$("#review-button").click(function(event) {
+    var newReviewForm = $("#reviewForm");
+    var newReview = $("#newReview");
+    var newTitle = $("#title");
+    var newRate = $("#rate");
+    
+
+    event.preventDefault();
+    var review = newReview.val();
+    var title = newTitle.val();
+    var rate = newRate.val();
+    if (review && title) {
+        
+        var requestConfig = {
+            method: "post",
+            url:"/products/reviews",
+            contentType: "application/json; charset = UTF-8",
+            data: JSON.stringify({
+                review: review,
+                title: title,
+                rating: rate
+              }),
+        };
+        console.log(requestConfig);
+        $.ajax(requestConfig).then(function(response) {
+            console.log(response);
+            window.alert("Review successfully posted!")
+            
+        })
+    };
+    $("#reviewForm").trigger('reset');
+   
+})
+
+
 /*function search() {
     var input = document.getElementById("searchInput");
     var filter = input.value.toLowerCase();

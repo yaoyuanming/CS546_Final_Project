@@ -164,7 +164,7 @@ let exportMethods = {
     addReviewToUser(userId, reviewId, reviewTitle) {
         return users().then(userCollection => {
             return userCollection.updateOne(
-                { _id: id},
+                { _id: userId},
                 {
                     $addToSet: {
                         reviews: {
