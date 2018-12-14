@@ -36,6 +36,7 @@ router.post("/:id", async (req, res) => {
         const expiryMonth = req.body.expirymonth;
         const expiryYear = req.body.expiryyear;
         const CVV = req.body.cvv;
+        if(cardName&&cardName&&expiryMonth&&expiryYear&&CVV){
         proList=[]
         thisOreder=cookieUser.cart;
         for(let i = 0 ; i < thisOreder.length; i++ ){
@@ -62,6 +63,11 @@ router.post("/:id", async (req, res) => {
 
         await usercart.emptyCart(cookieUser._id);
         res.render('success', {user: cookieUser,message: "Your Order has been placed!"});}
+
+        else{
+            throw e;
+        }
+        }
         catch(e){
             //throw e;
             res.render('payment', {error: "pay failed"});
