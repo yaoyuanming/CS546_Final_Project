@@ -1,5 +1,2 @@
-# CS546_Final_Project
-repo created
-mongod
-mongo
-"npm test" for testing purpose
+# CS546 Final Project
+## Group: BOI_NEXT_DOOR
