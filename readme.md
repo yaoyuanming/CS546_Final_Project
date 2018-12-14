@@ -5,6 +5,9 @@
  This project is a simple online shopping web application using bootstrap, handlebars, and mongodb.
  
  ## Usage:
+ Follow [this link](https://docs.mongodb.com/) to download, install and setup mongoDB. 
+ <br />
+ <br />
  Run seed file to load the products:
  ```
  node task/seed.js
