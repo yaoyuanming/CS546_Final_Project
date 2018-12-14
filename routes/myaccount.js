@@ -19,11 +19,7 @@ router.get("/:id", async (req, res) => {
     // })
 });
 
-router.get('/logout', (req, res) => {
-    res.cookie("AuthCookie", "", {expires: new Date() });
-    res.clearCookie("AuthCookie");
-    res.render('logout', {title: 'logout'})
-});
+
 
 
 
@@ -33,6 +29,10 @@ router.get("/wishlist", (req, res) => {
 
 router.get("/cart", (req, res) => {
     res.render('cart');
+})
+
+router.get("/order", (req, res) => {
+    res.render('neworder');
 })
 
 module.exports = router;

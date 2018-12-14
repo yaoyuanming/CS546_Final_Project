@@ -77,6 +77,7 @@ let exportMethods = {
                 email: email,
                 wishlists: [],
                 cart:[],
+                orders:[],
                 reviews: []
             };
             //console.log(newUser)
@@ -164,7 +165,7 @@ let exportMethods = {
     addReviewToUser(userId, reviewId, reviewTitle) {
         return users().then(userCollection => {
             return userCollection.updateOne(
-                { _id: userId},
+                { _id: id},
                 {
                     $addToSet: {
                         reviews: {
@@ -197,7 +198,28 @@ let exportMethods = {
 
 
 
+    // addOrderToUser  return user
+    addOrderToUser(userId, orderId) {
+        return users().then(userCollection => {
+            return userCollection.updateOne(
+                {_id: userId},
+                {
+                    $push: {
+                        orders: orderId
+                    }
+                }
 
+            ).then(() => {
+                return this.getUserById(userId);
+            })
+
+
+
+        })
+            .catch(() => {
+                return Promise.reject("Cannot add order into user");
+            })
+    },
     
 
 

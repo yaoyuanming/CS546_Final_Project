@@ -48,7 +48,7 @@ router.post('/home', async (req, res) => {
 router.get('/logout', (req, res) => {
     res.cookie("AuthCookie", "", {expires: new Date() });
     res.clearCookie("AuthCookie");
-    res.render('logout', {title: 'logout'})
+    res.render('logout', {title: 'You have been logged out!'})
 });
 
 

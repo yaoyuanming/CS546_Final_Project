@@ -42,8 +42,7 @@ router.get("/products/:id", async (req, res) => {
 });
 
 router.post("/products/reviews",async (req, res) => {
-    console.log("testing123123")
-    console.log(cookieUser);
+    
     var newRev = await reviewData.addReview(req.body.title, req.body.review, req.body.rating, cookieUser._id, singleprod._id);
     //console.log(newRev);
     var revtouser = await user.addReviewToUser(cookieUser._id, newRev._id, newRev.title);
@@ -58,7 +57,51 @@ router.post("/products/reviews",async (req, res) => {
     })
 });
 
+router.post('/products/cart/add', async (req, res) => {
+    const productId = req.body.cartproid;
 
+    if(typeof req.cookies.AuthCookie === 'undefined') {
+
+        res.render('home', {products: frontPageProd});
+    } else {
+
+        let cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        let allcarts = cookieUser.cart;
+        if(allcarts.indexOf(productId)>=0){
+            res.redirect("/cart/"+cookieUser._id.toString())
+        }
+        else{
+         await userCart.addItemToCart(cookieUser._id, productId);
+        res.redirect("/cart/"+cookieUser._id.toString())
+        }
+
+    }
+});
+
+
+router.post('/products/wish/add', async (req, res) => {
+    const productId = req.body.wishproid;
+
+    if(typeof req.cookies.AuthCookie === 'undefined') {
+
+        res.render('home', {products: frontPageProd});
+    } else {
+
+        let cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        let allwishs = cookieUser.wishlists;
+        if(allwishs.indexOf(productId)>=0){
+            res.redirect("/wishlist/"+cookieUser._id.toString())
+        }
+        else{
+            await userWishL.addItemToWish(cookieUser._id, productId);
+            res.redirect("/wishlist/"+cookieUser._id.toString())
+        }
+
+    }
+});
+
+
+    
 
 
 

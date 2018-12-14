@@ -24,25 +24,32 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/:id", async (req, res) => {
-    const cardName = req.body.card-holder-name;
-    const cardNumber = req.body.card-number;
-    const expiryMonth = req.body.expiry-month;
-    const expiryYear = req.body.expiry-year;
-    const CVV = req.body.cvv;
-    var newOrder = await neworder.createNewOrder(req.cookies.AuthCookie, cart);
-    
-    var newpayment = await payment.addPayment(cardNumber, newOrder._id);
-    var paymentadded = await neworder.addPaymentToOrder(newpayment, neworder._id);
-    console.log("payment")
-    res.render('success', { message: "Your Order has been placed!" });
+    if(typeof req.cookies.AuthCookie === 'undefined') {
 
+        res.render('home', {products: frontPageProd});
+    } else {
+        try{
+        const cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        const cardName = req.body.cardholdername;
+        const cardNumber = req.body.cardnumber;
+        const expiryMonth = req.body.expirymonth;
+        const expiryYear = req.body.expiryyear;
+        const CVV = req.body.cvv;
+        var userOrder = await neworder.createNewOrder(cookieUser.email, cookieUser.cart);
+
+        var newpayment = await payment.addPayment(cardNumber, userOrder._id);
+        var paymentadded = await neworder.addPaymentToOrder(newpayment, userOrder._id);
+         await user.addOrderToUser(cookieUser._id, paymentadded._id);
+           await usercart.emptyCart(cookieUser._id);
+        res.render('success', {message: "Your Order has been placed!"});}
+        catch(e){
+            throw e
+            //res.render('payment', {error: "pay failed"});
+        }
+    }
 })
 
 
-router.get('/logout', (req, res) => {
-    res.cookie("AuthCookie", "", {expires: new Date() });
-    res.clearCookie("AuthCookie");
-    res.render('logout', {title: 'logout'})
-});
+
 
 module.exports = router;

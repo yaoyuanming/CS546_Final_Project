@@ -31,11 +31,24 @@ router.get("/:id", async (req, res) => {
 
 
 
-router.get('/logout', (req, res) => {
-    res.cookie("AuthCookie", "", {expires: new Date() });
-    res.clearCookie("AuthCookie");
-    res.render('logout', {title: 'logout'})
+
+router.post('/:id', async (req, res) => {
+    const productId = req.body.proid;
+
+    if(typeof req.cookies.AuthCookie === 'undefined') {
+
+        res.render('home', {products: frontPageProd});
+    } else {
+
+        let cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        await userWishL.deleteItemFromWish(cookieUser._id, productId);
+        res.redirect("/wishlist/"+cookieUser._id.toString())
+
+    }
 });
+
+
+
 
 
 

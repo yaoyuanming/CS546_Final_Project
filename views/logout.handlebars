@@ -1,2 +1,11 @@
-<p>You have been logged out</p>
-<a href="/home">Home Page</a>
+    
+{{#if title}}
+    <div class="alert alert-success">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong> Successfully! </strong>
+        {{ title }}
+    </div>
+    {{/if}}
+    <div style="height: 600px">
+    <a href="/home">Click Here to Homepage</a>
+    </div>

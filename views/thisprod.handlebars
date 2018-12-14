@@ -36,22 +36,28 @@
             <li class="list-group-item">Price: $ {{thisProd.price}} </li>
             <li class="list-group-item">Category: {{thisProd.category}} </li>
             <li class="list-group-item"> {{thisProd.quantity}} Left</li>
-            <li class="list-group-item"> 
-                <a>
-                    Add To Cart
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a>
-                    Add To WishList
-                </a>
-            </li>
+            
 
 
         </ul>
+        {{#if user}}
+        <form class="list-group list-group-flush" action="cart/add" METHOD="POST">
+                <input type="string" name="cartproid" style="display:none" value={{products._id}}></input>
+                <li class="list-group-item"> <button type="submit" class="btn btn-primary">
+                    Add to My Cart
+                </button></li>
+            </form>
+
+            <form class="list-group list-group-flush" action="wish/add" METHOD="POST">
+                <input type="string" name="wishproid" style="display:none" value={{products._id}}></input>
+                <li class="list-group-item"> <button type="submit" class="btn btn-primary">
+                    Add to My WishList
+                </button></li>
+            </form>
+            {{/if}}
     </div>
     <div class="card" style="width:25rem" id="reviewCard">
-        <div class="card-header">
+        <div class="card-header" id="reviewHead">
             <h4>Reviews</h4>
         </div>
         {{#if reviews}}
