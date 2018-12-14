@@ -63,8 +63,8 @@ router.post("/:id", async (req, res) => {
         await usercart.emptyCart(cookieUser._id);
         res.render('success', {user: cookieUser,message: "Your Order has been placed!"});}
         catch(e){
-            throw e;
-            //res.render('payment', {error: "pay failed"});
+            //throw e;
+            res.render('payment', {error: "pay failed"});
         }
     }
 })
