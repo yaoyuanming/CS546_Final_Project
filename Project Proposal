@@ -1,0 +1,56 @@
+Final Project Idea: Online shopping web application
+Group Name: Boi_Next_Door
+Group Member: Siyu Chen, Xiang Wan, Chao Shu, Yingdong Li, Tianbo Tan
+
+
+
+Proposal:
+A well-designed shopping website
+User Authentication: User login/logout/signup.
+Searching: Item searching by user based on name, category, etc..
+Wishlist/Shopping cart: Items added/updated/deleted by user.
+Checkout: checkout from the shopping cart
+Orders: User may review the order
+Image Upload: allow user to upload the picture and view
+Posts: Reviews and ratings posted by user to an item.
+
+
+Requirement:
+You will create valid HTML pages that are styled with CSS
+You will use Express and Node.js to handle your server and your backend requirements
+You will persist data in a MongoDB database.
+You will use browser-based JavaScript in order to enhance the functionality of your page
+You will defend against basic security attacks
+You will create accessibility-friendly pages.
+A user login system
+AJAX form submissions (at least one) and error checking
+Data-related code organized in modules.
+A single configuration file that will store configuration settings
+
+
+
+Review:
+Code Quality
+Use of Client-Side JavaScript
+Use of Server-Side JavaScript
+Use of MongoDB
+Project Goals delivered
+Security measures
+Use of valid HTML and CSS
+Accessibility
+Only requiring database credentials to be updated in one file.
+
+
+
+
+Submit:
+You will submit a zip archive that contains:
+The directory with the final project
+A readme describing how to setup and use your project
+A seed task to seed your database with relevant data
+
+Final Project Presentation:
+All students will submit a video file on Canvas for their final project presentation.You will give a presentation demonstrating your product and discussing its technical background. You will go through your product and demonstrate it in its entirety; all deliverable goals, the entire process of using it, and so on. You will discuss any outside code that you used (i.e., frontend frameworks and libraries), as well as why you used said technologies. This video should be 10 to 15 minutes long. 
+ 
+ 
+
