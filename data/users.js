@@ -78,7 +78,8 @@ let exportMethods = {
                 wishlists: [],
                 cart:[],
                 orders:[],
-                reviews: []
+                reviews: [],
+                image: false
             };
             //console.log(newUser)
 
@@ -125,6 +126,17 @@ let exportMethods = {
         })
     },
 
+    updateUserImage(id) {
+        return users().then(userCollection => {
+            return userCollection.updateOne(
+                { _id: id},
+                {$set:{
+                    image: true
+                    }}
+            )
+        })
+    },
+
     /* Wishlists */
 
     //addWishToUser
@@ -165,7 +177,7 @@ let exportMethods = {
     addReviewToUser(userId, reviewId, reviewTitle) {
         return users().then(userCollection => {
             return userCollection.updateOne(
-                { _id: id},
+                { _id: userId},
                 {
                     $addToSet: {
                         reviews: {

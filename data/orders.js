@@ -41,7 +41,7 @@ let exportMethods = {
                 user: email,
                 items: cartItems,
                 payment: {},
-                date: new Date()
+                date: new Date(),
             };
             return orderCollection.insertOne(newOrder)
                    .then(newOrderInfo => {

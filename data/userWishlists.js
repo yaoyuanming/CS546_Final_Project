@@ -12,7 +12,7 @@ let exportMethods = {
 
         })
             .catch(() => {
-                return Promise.reject("Cannot get all items in cart");
+                return Promise.reject("Cannot get all items in wish");
             })
     },
 
@@ -28,14 +28,14 @@ let exportMethods = {
                 }
 
             ).then(() => {
-                return this.getAllCartItems(userId);
+                return this.getAllWishItems(userId);
             })
 
 
 
         })
             .catch(() => {
-                return Promise.reject("Cannot add Item into Cart");
+                return Promise.reject("Cannot add Item into wishlist");
             })
     },
 
@@ -50,11 +50,11 @@ let exportMethods = {
                     }
                 }
             ).then(() =>{
-                return this.getAllCartItems(userId);
+                return this.getAllWishItems(userId);
             })
         })
             .catch(() => {
-                return Promise.reject("Cannot delete Item from Cart")
+                return Promise.reject("Cannot delete Item from wish")
             })
     },
 
@@ -67,7 +67,7 @@ let exportMethods = {
                         wishlists: []
                     }}
             ).then(() => {
-                return this.getAllCartItems(userId);
+                return this.getAllWishItems(userId);
             })
         })
     }
