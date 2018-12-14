@@ -4,6 +4,8 @@
   "description": "This is the final project for CS546 at Stevens.",
   "main": "app.js",
   "scripts": {
+    "seed": "node ./tasks/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "Yingdong Li",
