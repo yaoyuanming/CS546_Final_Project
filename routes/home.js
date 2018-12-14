@@ -37,7 +37,7 @@ router.post('/home', async (req, res) => {
 
         res.cookie("AuthCookie", req.body.loginEmail);
     
-        res.render('myaccount', {
+        res.render('home', {
             user: loginUser
         })
     } else {
@@ -48,7 +48,7 @@ router.post('/home', async (req, res) => {
 router.get('/logout', (req, res) => {
     res.cookie("AuthCookie", "", {expires: new Date() });
     res.clearCookie("AuthCookie");
-    res.render('logout', {title: 'You have been logged out!'})
+    res.render('logout', {title: 'logout'})
 });
 
 

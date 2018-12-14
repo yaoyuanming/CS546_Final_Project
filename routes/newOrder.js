@@ -4,6 +4,7 @@ const data = require('../data');
 const productData = data.products;
 const user = data.users;
 const payment = data.payment;
+const neworder = data.orders;
 
 
 router.get("/:id", async (req, res) => {
@@ -44,6 +45,10 @@ router.get("/:id", async (req, res) => {
     
  });
 
-
+ router.get('/logout', (req, res) => {
+    res.cookie("AuthCookie", "", {expires: new Date() });
+    res.clearCookie("AuthCookie");
+    res.render('logout', {title: 'logout'})
+});
 
  module.exports = router;

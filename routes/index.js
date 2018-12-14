@@ -9,7 +9,6 @@ const wishlishRoutes = require("./wishlist")
 const orderRoutes = require("./newOrder")
 const paymentRoutes = require('./payment')
 
-
 const constructorMethod = app => {
     app.use("/test", testRoutes),
     app.use("/", homeRoutes),

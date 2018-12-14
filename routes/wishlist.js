@@ -3,6 +3,7 @@ const router = express.Router();
 const data = require("../data");
 const user = data.users;
 const productData = data.products;
+const userWishL = require('../data/userWishlists');
 
 router.get("/:id", async (req, res) => {
     let allProd = await productData.getAllProd();
@@ -31,6 +32,11 @@ router.get("/:id", async (req, res) => {
 
 
 
+router.get('/logout', (req, res) => {
+    res.cookie("AuthCookie", "", {expires: new Date() });
+    res.clearCookie("AuthCookie");
+    res.render('logout', {title: 'logout'})
+});
 
 router.post('/:id', async (req, res) => {
     const productId = req.body.proid;
@@ -46,10 +52,5 @@ router.post('/:id', async (req, res) => {
 
     }
 });
-
-
-
-
-
 
 module.exports = router;

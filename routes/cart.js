@@ -3,6 +3,8 @@ const router = express.Router();
 const data = require("../data");
 const user = data.users;
 const productData = data.products;
+const userCart = require('../data/userCart');
+const userOrder = require('../data/orders');
 
 router.get("/:id", async (req, res) => {
     let allProd = await productData.getAllProd();
@@ -15,7 +17,7 @@ router.get("/:id", async (req, res) => {
         let cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
         let carts = cookieUser.cart;
         if(carts.length === 0) {
-            //console.log("length is 0")
+            console.log("length is 0")
             res.render('cart', {user: cookieUser,  error: "No items in your shopping cart!"})
         }
         else {
@@ -37,6 +39,7 @@ router.get('/logout', (req, res) => {
     res.render('logout', {title: 'logout'})
 });
 
+
 router.post('/:id', async (req, res) => {
     const productId = req.body.proid;
 
@@ -51,7 +54,6 @@ router.post('/:id', async (req, res) => {
 
     }
 });
-
 
 
 module.exports = router;

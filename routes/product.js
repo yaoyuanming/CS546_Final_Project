@@ -3,10 +3,9 @@ const router = express.Router();
 const data = require("../data");
 const products = data.products;
 const user = data.users;
+const userCart = require('../data/userCart');
+const userWishL = require('../data/userWishlists');
 const reviewData = data.reviews;
-
-
-
 
 router.get("/products", async (req, res) => {
     var allProd = await products.getAllProd();
@@ -17,46 +16,32 @@ router.get("/products", async (req, res) => {
     } else {
         
         console.log(req.cookies.AuthCookie)
-        cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        var cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
         res.render('products', {products: allProd, user: cookieUser});
     }
 });
 
-var singleprod;
-var cookieUser; 
-
+// getProdByCat
+// getProdByTitle
+var thisProd;
 router.get("/products/:id", async (req, res) => {
-     singleprod = await products.getProdById(req.params.id);
-    //console.log(req.params.id)
-    //console.log(req.params.id)
-    var reviewForProd = await reviewData.getReviewByProdId(singleprod._id);
-    console.log("cookieUser");
-    if(typeof req.cookies.AuthCookie === 'undefined') {
+
+	 thisProd = await products.getProdById(req.params.id);
+
+    var reviewForProd = await reviewData.getReviewByProdId(thisProd._id);
+	if(typeof req.cookies.AuthCookie === 'undefined') {
         
-        res.render('thisprod', {thisProd: singleprod, reviews:reviewForProd});
+        res.render('thisprod_unlogin', {products: thisProd});
+
     } else {
-        cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
-        res.render('thisprod', {thisProd: singleprod, reviews:reviewForProd, user: cookieUser})
         
+        console.log(req.cookies.AuthCookie)
+        var cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+        console.log(reviewForProd);
+        res.render('thisprod', {user: cookieUser,reviews:reviewForProd, products: thisProd});
     }
-});
 
-router.post("/products/reviews",async (req, res) => {
-    
-    var newRev = await reviewData.addReview(req.body.title, req.body.review, req.body.rating, cookieUser._id, singleprod._id);
-    //console.log(newRev);
-    var revtouser = await user.addReviewToUser(cookieUser._id, newRev._id, newRev.title);
-    console.log(newRev._id);;
-    var revtoprod = await products.addReviewToProd(singleprod._id, newRev._id, newRev.title);
-    console.log("testing123123")
-    res.json({
-        user: cookieUser,
-        product: singleprod,
-        review: req.body,
-        date: new Date()
-    })
 });
-
 router.post('/products/cart/add', async (req, res) => {
     const productId = req.body.cartproid;
 
@@ -77,7 +62,6 @@ router.post('/products/cart/add', async (req, res) => {
 
     }
 });
-
 
 router.post('/products/wish/add', async (req, res) => {
     const productId = req.body.wishproid;
@@ -100,13 +84,23 @@ router.post('/products/wish/add', async (req, res) => {
     }
 });
 
+router.post("/products/reviews",async (req, res) => {
+    if(typeof req.cookies.AuthCookie === 'undefined') {
 
-    
-
-
-
-
-
+        res.render('home', {products: frontPageProd});
+    }else {
+        let cookieUser = await user.getUserByEmail(req.cookies.AuthCookie);
+    var newRev = await reviewData.addReview(req.body.title, req.body.review, req.body.rating, cookieUser._id, thisProd._id);
+    var revtouser = await user.addReviewToUser(cookieUser._id, newRev._id, newRev.title);
+    var revtoprod = await products.addReviewToProd(thisProd._id, newRev._id, newRev.title);
+    res.json({
+        user: cookieUser,
+        product: thisProd,
+        review: req.body,
+        date: new Date()
+    })
+    }
+});
 
 //TODO: Single product Info page
 module.exports = router;
