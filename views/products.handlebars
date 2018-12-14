@@ -18,61 +18,47 @@
     </div>
 {{/if}}
 
-{{!-- <div class="row row-content">
+<div class="row row-content">
     <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header" class="col-md-3">
-        <a class="navbar-brand" href="#">Category</a>
-    </div>
-    <div class="col-md-9">
-        <ul class="nav navbar-nav">    
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    MEN
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">TOP</a></li>
-                    <li><a href="#">BOTTOM</a></li>
-                    <li><a href="#">SHOES</a></li>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">CATEGORY</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            CLOTHING
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://localhost:3000/productsbycat/hoodie">HOODIE</a></li>
+                            <li><a href="http://localhost:3000/productsbycat/pants">PANTS</a></li>
+                        </ul>
+                    </li>
+                    <<li><a href="http://localhost:3000/productsbycat/hat">HAT</a></li>
+                    <li><a href="http://localhost:3000/productsbycat/shoes">SHOES</a></li>
+                    <li><a href="http://localhost:3000/productsbycat/accessories">ACCESSORIES</a></li>
+
                 </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    WOMEN
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">TOP</a></li>
-                    <li><a href="#">BOTTOM</a></li>
-                    <li><a href="#">SHOES</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Accessories</a></li>
-            <li><a href="#">Special</a></li>
-        </ul>
-    </div>
-    </div>
-</nav>
-</div> --}}
+            </div>
+        </div>
+    </nav>
+</div>
 
 <div class="row row-content" id="productLists">
     {{#each products}}
     <div class="col-md-3" style="margin: 15px;" id="single" >
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="../public/img/{{this.title}}.jpg" alt="card image"
-                style="width: 240px; height:160px">
+            <a href="/products/{{_id}}"><img class="card-img-top" src="../public/img/{{title}}.jpg" alt="card image"
+                style="width: 240px; height:160px"></a>
             <div class="card-body" style="margin:15px">
-                <h5 class="card-title"> {{this.title}} </h5>
-                <p class="card-text"> {{this.description}} </p>
+                <a href="/products/{{_id}}">    <h5 class="card-title"> {{title}} </h5></a>
 
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Price: $ {{this.price}} </li>
-                <li class="list-group-item" id = "category">Category:  {{this.category}} </li>
-                <li class="list-group-item"> {{this.quantity}} Left</li>
+                <li class="list-group-item">Price: $ {{price}} </li>
                 <li class="list-group-item">
-                    <a href="/products/{{this._id}}">Details</a>
+                    <a href="/products/{{_id}}">More Details</a>
                 </li>
             </ul>
         </div>

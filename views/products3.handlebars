@@ -1,0 +1,70 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/home">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Products</li>
+        <li class="pull-right">
+            <input type="text" id="searchInput" placeholder="Search....">
+        </li>
+    </ol>
+    
+</nav>
+{{#if error}}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong> Error </strong>
+        {{ error }}
+    </div>
+{{/if}}
+<div class="row row-content">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">CATEGORY</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    CLOTHING
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://localhost:3000/productsbycat/hoodie">HOODIE</a></li>
+                    <li><a href="http://localhost:3000/productsbycat/pants">PANTS</a></li>
+                </ul>
+            </li>
+            <<li><a href="http://localhost:3000/productsbycat/hat">HAT</a></li>
+            <li><a href="http://localhost:3000/productsbycat/shoes">SHOES</a></li>
+            <li><a href="http://localhost:3000/productsbycat/accessories">ACCESSORIES</a></li>
+            
+        </ul>
+    </div>
+    </div>
+</nav>
+</div>
+<div class="row row-content" id="productLists">
+    {{#each products}}
+    <div class="col-md-3" style="margin: 15px;">
+        <div class="card" style="width: 18rem;">
+            <!--<div class="divprodimg"> -->
+                <a href="/products/{{_id}}">
+                    <img class="card-image-top" src="../public/img/{{title}}.jpg" alt="card image" style="width:170px;height:130px">
+                </a>
+            <!--</div>-->
+                 
+           
+           
+            <div class="card-body">
+                <h5><a href="/products/{{_id}}">{{title}}</a></h5>
+
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: $ {{price}} </li>
+
+            </ul>
+        </div>
+    </div>
+    {{/each}}
+</div>

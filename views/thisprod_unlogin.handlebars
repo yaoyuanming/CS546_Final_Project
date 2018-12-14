@@ -1,0 +1,30 @@
+<div class="row row-content">
+
+    <div class="col-md-3" style="margin: 15px;">
+        <div class="card" style="width: 18rem;">
+            <!--<div class="divprodimg"> -->
+
+            <img class="card-image-top" src="../public/img/{{products.title}}.jpg" alt="card image" style="width:170px;height:130px">
+
+            <!--</div>-->
+
+
+
+            <div class="card-body">
+                <h5 class="card-title"> {{products.title}} </h5>
+                <p class="card-text"> {{products.description}} </p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: $ {{products.price}} </li>
+                <li class="list-group-item">Category:  {{products.category}} </li>
+                <li class="list-group-item"> {{products.quantity}} Left</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong> Login To See More </strong>
+</div>

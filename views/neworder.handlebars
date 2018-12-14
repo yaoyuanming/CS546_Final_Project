@@ -2,13 +2,20 @@
     <h2>Your Order</h2>
 </div>
 
-<div class="card" style="width: 28rem">
-    <ul class="list-group list-group-flush">
-        {{#each cart}}
-        <li class="list-group-item">{{this.title}}</li>
-        {{/each}}
-    </ul>
-    <div class="card-body">
-        <a class="btn btn-primary" href="/payment/{{user._id}}">Go To Payment</a>
-    </div>
+<div class="row row-content">
+
+    {{#each finishedOrders}}
+        <div class="col-md-3" style="margin: 15px;">
+            <div class="card" style="width: 18rem;">
+
+                    <li class="list-group-item">order id:  {{_id}} </li>
+                    <li class="list-group-item"> user email:{{email}}</li>
+            {{#each ItemsLists}}
+                <a href="/products/{{_id}}"> <li class="list-group-item">title:  {{title}} </li></a>>
+            {{/each}}
+                <li class="list-group-item"> date:{{date}} </li>
+
+            </div>
+        </div>
+    {{/each}}
 </div>

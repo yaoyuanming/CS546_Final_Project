@@ -23,18 +23,22 @@
     {{#each wishProducts}}
         <div class="col-md-3" style="margin: 15px;">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../public/img/test.jpg" alt="card image">
+                <img class="card-image-top" src="../public/img/{{title}}.jpg" alt="card image" style="width:170px;height:130px">
                 <div class="card-body">
-                    <h5><a href="/posts/{{_id}}">{{title}}</a></h5>
-                    <p class="card-text"> {{description}} </p>
+                    <h5><a href="/products/{{_id}}">{{title}}</a></h5>
+                    <p class="card-text"> <a href="/products/{{_id}}">{{description}}</a> </p>
 
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Price: $ {{price}} </li>
-                    <li class="list-group-item">Category:  {{category}} </li>
-                    <li class="list-group-item"> {{quantity}} Left</li>
 
-                </ul>
+                <form class="list-group list-group-flush" id="delete" METHOD="POST">
+                    <input type="string" name="proid" style="display:none" value={{_id}}></input>
+                    <li class="list-group-item">Price: $ {{price}} </li>
+                    <li class="list-group-item"> <button type="submit" class="btn btn-primary">
+                        delete
+                    </button></li>
+                </form>
+
+
             </div>
         </div>
     {{/each}}
