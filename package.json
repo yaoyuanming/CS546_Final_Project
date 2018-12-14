@@ -4,8 +4,7 @@
   "description": "This is the final project for CS546 at Stevens.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "node test.js"
+    "start": "node server.js"
   },
   "author": "Yingdong Li",
   "license": "MIT",
@@ -17,6 +16,8 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "font-awesome": "^4.7.0",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
     "jquery": "^3.3.1",
     "json-stringify": "^1.0.0",
     "mongodb": "^3.1.10",
